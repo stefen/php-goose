@@ -134,7 +134,8 @@ class Configuration {
      */
     public function isValidModule($category, $class) {
         if (isset($this->modules[$category])
-          && $class instanceof ModuleInterface) {
+            && ($class instanceof ModuleInterface or is_subclass_of(
+                    $class, ModuleInterface::class) )) {
             return true;
         }
 
